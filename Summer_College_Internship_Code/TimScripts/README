@@ -1,0 +1,112 @@
+Author: Tim Peloza
+
+*********Notice**********
+NetMasterCode.py and CPU.py should stay together since NetMasterCode uses it.
+For MasterCode, Automation2, MasterCodeApp, and NetMasterCode tasks must be listed within the file/program.
+
+
+Programs in this folder:
+
+allplot.py	Graphs2.py  IMSI.py	      MasterCode.py
+Automation2.py	Graphs.py   IMSIStats.py      NetMasterCode.py
+cpu.py		MasterCodeApp.py  
+
+
+------------------------------------------------------
+
+Graphs:
+
+Graphs Percentile vs Flow Latency.
+
+Arguments:
+-f filename
+
+------------------------------------------------------
+
+Graphs2:
+
+Graphs Throughput vs. Time.
+
+Arguments:
+-f filename
+-n # of nodes
+
+------------------------------------------------------
+
+IMSI:
+
+Sums up the occurrences of each node. Puts nodes into two groups such as first-half and half+1-last. Calculates probability based off of total in each group.
+
+Arguments:
+-f filename
+-n # of nodes
+
+------------------------------------------------------
+
+IMSIStats:
+
+Gets the mean, median, max, and min of each node in the file.
+
+Arguments:
+-f filename
+-n # of nodes
+
+------------------------------------------------------
+
+MasterCode:
+
+Job scheduler. Schedules jobs on different subprocesses, checks for completion of each task, and creates subprocess upon termination of task.
+
+No Arguments
+
+------------------------------------------------------
+
+MasterCodeApp:
+
+Same as MasterCode, but changes the m_incast_pauseT values.
+
+Arguments:
+
+-w float_value
+-x float_value
+-y float_value
+-z float_value
+
+------------------------------------------------------
+
+Automation2:
+
+Same as MasterCode, but executes multiple subprocesses.
+
+No Arguments.
+
+------------------------------------------------------
+
+CPU
+
+Program uses ssh to access a machines stats and calculates cpu usage on each core. Program also creates a list of available core based of usage(Below 20% usage). Uses a list of hosts and users to access the computer/server.
+
+Arguments:
+
+-a # of assignments (Just so it knows when its done)
+-h host
+-u user
+
+------------------------------------------------------
+
+NetMasterCode
+
+Similar to MasterCode, but uses ssh to access other computers. It executes programs based off of the usage of each core and assigns each task on avaialable cores. If no cores are available it will either wait for one to become available or check another host. Once a task completes all of its outputfiles/necessary files are copied over to whichever computer is doing its subprocess. Once all processes are done all files that the program produced are sent to the computer that initiated the program and all files associated with Netmastercode are deleted on the host/server computers.
+
+No Arguments, but does need a hosts.txt(inluded in this folder already with one entry) folder with the format of:
+
+user ip
+ex: tpeloz2 10.31.48.167
+
+------------------------------------------------------
+
+AllPlot(I did not make, but contributed to):
+
+Added the ability for the program to average the values and store the averaged values to a text file
+
+------------------------------------------------------
